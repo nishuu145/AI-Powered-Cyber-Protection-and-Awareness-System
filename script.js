@@ -10,6 +10,7 @@ const alerts = [
 
 function showAlerts() {
   const container = document.getElementById("alerts-container");
+  if (!container) return; // prevent error if missing
   container.innerHTML = "";
   const shuffled = alerts.sort(() => 0.5 - Math.random());
   shuffled.slice(0, 4).forEach(alert => {
@@ -22,22 +23,11 @@ function showAlerts() {
 
 document.addEventListener("DOMContentLoaded", () => {
   showAlerts();
-  document.getElementById("refresh-btn").addEventListener("click", showAlerts);
-
-  // Checklist progress tracker
-  const checkboxes = document.querySelectorAll(".chk");
-  const progressBar = document.getElementById("progress-bar");
-
-  function updateProgress() {
-    const total = checkboxes.length;
-    const checked = [...checkboxes].filter(c => c.checked).length;
-    const percent = (checked / total) * 100;
-    progressBar.style.width = percent + "%";
-  }
-
-  checkboxes.forEach(chk => chk.addEventListener("change", updateProgress));
+  const btn = document.getElementById("refresh-btn");
+  if (btn) btn.addEventListener("click", showAlerts);
 });
 
+// === Password Strength Checker ===
 function checkPassword() {
   const pwd = document.getElementById("pwdInput").value;
   const strength = document.getElementById("pwdStrength");
@@ -59,3 +49,24 @@ function checkPassword() {
   strength.textContent = `Password Strength: ${msg}`;
   suggestions.textContent = advice;
 }
+
+// === Checklist Progress Tracker ===
+document.addEventListener("DOMContentLoaded", () => {
+  showAlerts();
+
+  // Refresh alerts button
+  document.getElementById("refresh-btn").addEventListener("click", showAlerts);
+
+  // Checklist progress bar
+  const checkboxes = document.querySelectorAll(".chk");
+  const progressBar = document.getElementById("progress-bar");
+
+  function updateProgress() {
+    const total = checkboxes.length;
+    const checked = [...checkboxes].filter(c => c.checked).length;
+    const percent = (checked / total) * 100;
+    progressBar.style.width = percent + "%";
+  }
+
+  checkboxes.forEach(chk => chk.addEventListener("change", updateProgress));
+});

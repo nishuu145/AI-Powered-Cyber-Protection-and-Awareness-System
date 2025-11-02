@@ -31,28 +31,43 @@
       </div>
 
       <!-- Feature 3 -->
-      <div class="feature-card">
-        <h2>3️⃣ Real-Time Scam Alerts</h2>
-        <p>Stay updated with live scam alerts and cyber breach notifications.</p>
-        <button id="refresh-btn">Refresh Alerts</button>
-      </div>
+<div class="feature-card">
+  <h2>3️⃣ Real-Time Scam Alerts</h2>
+  <p>Stay updated with live scam alerts and cyber breach notifications.</p>
+
+  <!-- Alerts will appear here -->
+  <div id="alerts-container" style="margin-top: 12px;"></div>
+
+  <!-- Refresh button -->
+  <button id="refresh-btn">Refresh Alerts</button>
+</div>
+
 
       <!-- Feature 4 -->
-      <div class="feature-card">
-        <h2>4️⃣ Password Strength Checker</h2>
-        <p>Test how secure your password is and get instant improvement tips.</p>
-        <input type="password" placeholder="Enter password..." id="pwdInput">
-        <p id="pwdStrength"></p>
-        <button onclick="checkPassword()">Check Strength</button>
-        <div id="password-suggestions">
-          <strong>💡 Strong Password Tips:</strong>
-          <ul>
-            <li>Use 12+ characters with mix of letters, numbers & symbols</li>
-            <li>Avoid names or birthdays</li>
-            <li>Example: <code>!Tr0n$hield@2045</code></li>
-          </ul>
-        </div>
-      </div>
+<div class="feature-card">
+  <h2>4️⃣ Password Strength Checker</h2>
+  <p>Test how secure your password is and get instant improvement tips.</p>
+  
+  <input type="password" placeholder="Enter password..." id="pwdInput">
+  <p id="pwdStrength"></p>
+
+  <!-- Button triggers JS strength check -->
+  <button onclick="checkPassword()">Check Strength</button>
+
+  <!-- Dynamic suggestion area -->
+  <p id="pwdSuggestions" style="font-size: 0.95rem; color: #d3adff; margin-top: 8px;"></p>
+
+  <!-- Static password tips -->
+  <div id="password-suggestions" style="margin-top: 12px;">
+    <strong>💡 Strong Password Tips:</strong>
+    <ul>
+      <li>Use 12+ characters with a mix of letters, numbers & symbols</li>
+      <li>Avoid names, birthdays, or simple words</li>
+      <li>Example: <code>!Tr0n$hield@2045</code></li>
+    </ul>
+  </div>
+</div>
+
 
       <!-- Feature 5 -->
       <div class="feature-card">
