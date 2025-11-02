@@ -1,51 +1,157 @@
+/* === BASE === */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #000000, #2a004e, #4b0082);
+  background-attachment: fixed;
+  color: #eaeaea;
   margin: 0;
   padding: 0;
-  color: #333;
 }
 
+/* === HEADER === */
 header {
-  background-color: #004aad;
-  color: white;
   text-align: center;
-  padding: 1.5rem;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(90deg, #4b0082, #9c27b0);
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-main {
-  padding: 20px;
+/* === NEON TITLE === */
+.neon-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 2.7rem;
+  color: #d8b8ff;
+  text-shadow:
+    0 0 5px #bb86fc,
+    0 0 10px #bb86fc,
+    0 0 20px #a45eff,
+    0 0 40px #7b00ff,
+    0 0 80px #5600d4;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
 }
 
-section {
-  margin-bottom: 30px;
+/* === FEATURE GRID === */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-form {
+/* === CARDS === */
+.feature-card {
+  background-color: rgba(25, 0, 51, 0.85);
+  border: 1px solid #5f3dc4;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(100, 50, 255, 0.2);
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(155, 100, 255, 0.4);
+}
+.feature-card h2 {
+  color: #e2c6ff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+.feature-card p, .feature-card li {
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+/* ---- Compact checklist styling (checkbox + text left aligned) ---- */
+.checklist-card form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  gap: 8px;
+  margin-top: 6px;
+  align-items: flex-start;
 }
 
-input, textarea, button {
-  margin: 8px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-button {
-  background-color: #004aad;
-  color: white;
+.checklist-card label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(80, 0, 120, 0.18);
+  color: #e4dfff;
+  font-size: 0.92rem;
+  text-align: left;
+  width: 100%;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #00357d;
+.checklist-card label:hover {
+  background: rgba(130, 0, 200, 0.28);
 }
 
+.checklist-card input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #a06cff;
+  cursor: pointer;
+  margin-left: 0;
+}
+
+
+/* === BUTTONS === */
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+input {
+  background: #0d0d17;
+  color: white;
+  border: 1px solid #6b4fe3;
+}
+button {
+  background: linear-gradient(90deg, #6a00ff, #a800ff);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background: linear-gradient(90deg, #a800ff, #6a00ff);
+  transform: scale(1.03);
+}
+
+/* === EMERGENCY BUTTON === */
+.emergency-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+.emergency {
+  background: rgba(70, 0, 0, 0.85);
+  border: 1px solid #ff4d4d;
+  max-width: 400px;
+  text-align: center;
+}
+.emergency-btn {
+  background: linear-gradient(90deg, #ff1a1a, #cc0000);
+}
+.emergency-btn:hover {
+  background: linear-gradient(90deg, #cc0000, #ff1a1a);
+}
+
+/* === FOOTER === */
 footer {
   text-align: center;
-  padding: 10px;
-  background-color: #eee;
+  padding: 20px;
+  color: #aaa;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 0.9rem;
 }

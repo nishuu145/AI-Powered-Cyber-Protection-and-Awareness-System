@@ -1,32 +1,61 @@
-// Sample data – in real use, this could come from an API
 const alerts = [
-  "🔐 Major data breach at social media platform affecting 2M users.",
+  "🔐 Major data breach at a social platform affecting 2M users.",
   "💸 New phishing scam pretending to be your bank detected.",
   "⚠️ Fake antivirus software spreading via email attachments.",
   "🕵️‍♀️ Cyber criminals targeting students with fake internship offers.",
   "🚨 Malware hidden inside free game downloads reported.",
-  "📧 Government warns about fake income tax refund emails.",
-  "🧠 AI-generated scam messages detected on messaging apps."
+  "📧 Fake government tax refund emails circulating online.",
+  "🤖 AI-generated scam messages detected on messaging apps."
 ];
 
 function showAlerts() {
   const container = document.getElementById("alerts-container");
-  container.innerHTML = ""; // clear previous alerts
-
-  // Shuffle alerts randomly
+  container.innerHTML = "";
   const shuffled = alerts.sort(() => 0.5 - Math.random());
-
-  shuffled.slice(0, 5).forEach((alert, i) => {
+  shuffled.slice(0, 4).forEach(alert => {
     const div = document.createElement("div");
-    div.className = "bg-gray-800 text-left p-3 rounded-xl text-gray-200 border border-purple-700 hover:bg-gray-700 transition fade-in";
-    div.style.animationDelay = `${i * 0.1}s`;
+    div.className = "alert-box";
     div.textContent = alert;
     container.appendChild(div);
   });
 }
 
-// Show alerts automatically on page load
-showAlerts();
+document.addEventListener("DOMContentLoaded", () => {
+  showAlerts();
+  document.getElementById("refresh-btn").addEventListener("click", showAlerts);
 
-// Add refresh functionality
-document.getElementById("refresh-btn").addEventListener("click", showAlerts);
+  // Checklist progress tracker
+  const checkboxes = document.querySelectorAll(".chk");
+  const progressBar = document.getElementById("progress-bar");
+
+  function updateProgress() {
+    const total = checkboxes.length;
+    const checked = [...checkboxes].filter(c => c.checked).length;
+    const percent = (checked / total) * 100;
+    progressBar.style.width = percent + "%";
+  }
+
+  checkboxes.forEach(chk => chk.addEventListener("change", updateProgress));
+});
+
+function checkPassword() {
+  const pwd = document.getElementById("pwdInput").value;
+  const strength = document.getElementById("pwdStrength");
+  const suggestions = document.getElementById("pwdSuggestions");
+  let msg = "Weak 🔴";
+  let advice = "";
+
+  if (pwd.length > 8 && /[A-Z]/.test(pwd) && /\d/.test(pwd) && /\W/.test(pwd)) {
+    msg = "Strong 🟢";
+    advice = "✅ Great! Your password looks strong. Keep it private and unique.";
+  } else if (pwd.length >= 6) {
+    msg = "Medium 🟡";
+    advice = "⚠️ Add capital letters, symbols, and numbers to make it stronger.";
+  } else {
+    msg = "Weak 🔴";
+    advice = "❌ Use at least 8+ characters with mix of A-Z, a-z, 0-9, and symbols.";
+  }
+
+  strength.textContent = `Password Strength: ${msg}`;
+  suggestions.textContent = advice;
+}
